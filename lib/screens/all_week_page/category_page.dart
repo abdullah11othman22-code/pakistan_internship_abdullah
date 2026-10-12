@@ -14,8 +14,10 @@ class CategoryPage extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         title: Text('Weeks', style: TextStyle(color: Colors.white)),
       ),
-      body: Center(
-        child: GridView.builder(
+      body:
+      Center(
+        child:
+        GridView.builder(
           itemCount: weeks.length,
           itemBuilder: (BuildContext context, int index) {
             return MainCard(onTap: (){

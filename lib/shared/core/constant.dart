@@ -10,7 +10,7 @@ import '../../models/to_do_model_draft.dart';
 import '../../screens/week1/week_1_tasks/task2/basic_contact_form.dart';
 import '../../screens/week3/week3_task1/week3_task1.dart';
 import '../../screens/week4/week4_task1.dart';
-import '../../screens/week5/task_1/recipe_app.dart';
+import '../../screens/week5/screens/home_recipe.dart';
 
 List<Week> weeks = [
   Week(
@@ -485,6 +485,6 @@ nameTest: 'جغرافيا متقدمة',
     ))
   ]),
   Week(title: "Week -5-", screen: TasksScreen(numberWeek: 5,),tasks:[Task(
-      taskId: '1', state: 'in progress', title: 'Recipe App',screen: RecipeApp()),]
+      taskId: '1', state: 'in progress', title: 'Recipe App',screen: HomeRecipe()),]
 
 )];

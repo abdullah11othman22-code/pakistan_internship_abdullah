@@ -5,17 +5,17 @@ import 'package:project1/models/test.dart';
 import 'package:project1/models/week.dart';
 import 'package:project1/screens/week1/week_1_tasks/task1/counter_screen.dart';
 import 'package:project1/screens/week2/week_2_task_1/task1.dart';
-import 'package:project1/shared/widgets/task_view.dart';
 import 'package:project1/shared/widgets/tasks_screen.dart';
 import '../../models/to_do_model_draft.dart';
 import '../../screens/week1/week_1_tasks/task2/basic_contact_form.dart';
 import '../../screens/week3/week3_task1/week3_task1.dart';
 import '../../screens/week4/week4_task1.dart';
+import '../../screens/week5/task_1/recipe_app.dart';
 
 List<Week> weeks = [
   Week(
     title: "Week-1-",
-    screen: TasksScreen(numberWeek: 1),
+    screen: TasksScreen(numberWeek: 1,),
     tasks: [
       Task(
         taskId: "Task-1-",
@@ -33,7 +33,7 @@ List<Week> weeks = [
   ),
   Week(
     title: "Week -2-",
-    screen: TasksScreen(numberWeek: 2),
+    screen: TasksScreen(numberWeek: 2,),
     tasks: [
       Task(
         taskId: "Task-1-",
@@ -464,7 +464,7 @@ nameTest: 'جغرافيا متقدمة',
       ),
     ],
   ),
-  Week(title: "Week -4-", screen: TasksScreen(numberWeek: 4),tasks: [
+  Week(title: "Week -4-", screen: TasksScreen(numberWeek: 4,),tasks: [
     Task(taskId: "Task -1-", state: "done", title: "To Do List",screen:
     ToDoList(
       stateModel: [
@@ -484,5 +484,7 @@ nameTest: 'جغرافيا متقدمة',
       ],
     ))
   ]),
-  Week(title: "Week -5-", screen: TasksScreen(numberWeek: 5)),
-];
+  Week(title: "Week -5-", screen: TasksScreen(numberWeek: 5,),tasks:[Task(
+      taskId: '1', state: 'in progress', title: 'Recipe App',screen: RecipeApp()),]
+
+)];

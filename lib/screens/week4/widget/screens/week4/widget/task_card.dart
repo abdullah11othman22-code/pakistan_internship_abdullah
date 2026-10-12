@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project1/models/to_do_model.dart';
 
 class ToDoCard extends StatefulWidget {
   const ToDoCard({

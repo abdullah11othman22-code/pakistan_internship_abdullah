@@ -28,7 +28,7 @@ class AnswerView extends StatelessWidget {
               height: 500,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   height: 700,
                   child: ListView.separated(

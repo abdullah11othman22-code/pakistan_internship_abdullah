@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
   final Function()? onTap;
   final String text;
 
-  handleButtonType() {
+  void handleButtonType() {
     switch (buttonType) {
       case ButtonType.small:
       // TODO: Handle this case.

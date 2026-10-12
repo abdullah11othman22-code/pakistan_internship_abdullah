@@ -30,9 +30,9 @@ class _SimpleShoppingListScreenState extends State<SimpleShoppingListScreen> {
             );
           },
           child: CircleAvatar(
-            child: const Icon(Icons.add),
             backgroundColor: Colors.deepPurple.shade100,
             radius: 28,
+            child: const Icon(Icons.add),
           ),
         ),
       ),

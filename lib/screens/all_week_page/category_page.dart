@@ -14,8 +14,7 @@ class CategoryPage extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         title: Text('Weeks', style: TextStyle(color: Colors.white)),
       ),
-      body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(vertical: 14, horizontal: 14),
+      body: Center(
         child: GridView.builder(
           itemCount: weeks.length,
           itemBuilder: (BuildContext context, int index) {
@@ -36,9 +35,9 @@ class CategoryPage extends StatelessWidget {
           },
           gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 14,
-            mainAxisSpacing: 14,
+              crossAxisCount: 2,
+              mainAxisSpacing: 5,childAspectRatio: 1,mainAxisExtent: 150
+
           ),
         ),
       ),

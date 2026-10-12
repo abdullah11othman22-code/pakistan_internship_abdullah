@@ -29,6 +29,7 @@ class CustomTextFeild extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return "please fill the field";
                 }
+                return null;
               },
           decoration: InputDecoration(
             hintText: hint,

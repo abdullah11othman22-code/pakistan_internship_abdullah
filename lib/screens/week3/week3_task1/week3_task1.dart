@@ -12,15 +12,14 @@ class Week3Task1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsetsGeometry.all(12),
+      body: Center(
         child: GridView.builder(
           itemCount: tests.length,
           gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 14,
-            mainAxisSpacing: 14,
+              crossAxisCount: 2,
+              mainAxisSpacing: 5,childAspectRatio: 1,mainAxisExtent: 150
+
 
           ),
           itemBuilder: (context, index) =>

@@ -79,7 +79,7 @@ class _TaskDialogState extends State<TaskDialog> {
 
             DropdownButtonFormField<TaskStateEnum>(
 
-              value: selectedState,
+              initialValue: selectedState,
 
               items: TaskStateEnum.values.map((state){
 

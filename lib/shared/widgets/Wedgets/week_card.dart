@@ -12,7 +12,10 @@ class MainCard extends StatelessWidget {
       GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(
+        margin: EdgeInsetsGeometry.symmetric(horizontal: 16,vertical: 12),
+        height: 125,
+        width: 125,
+        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16)),
           color: Colors.white,
           boxShadow: [
             BoxShadow(

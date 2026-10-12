@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project1/models/task.dart';
 
 class TaskView extends StatelessWidget {
-  const TaskView(  {super.key,  this.task, required int this.numberWeek});
+  const TaskView(  {super.key,  this.task, required this.numberWeek});
 final int numberWeek;
 final Task? task;
 
@@ -15,7 +14,7 @@ final Task? task;
           Navigator.pop(context);
         }, icon:Icon( Icons.arrow_back,color: Colors.white,)),
         centerTitle: true,
-        title: Text(task!.taskId, style: TextStyle(color: Colors.white)),
+        title: Text(task!.title, style: TextStyle(color: Colors.white)),
       ),
       body: task?.screen,
     );

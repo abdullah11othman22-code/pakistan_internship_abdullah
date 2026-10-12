@@ -7,25 +7,32 @@ import '../../models/task.dart';
 import 'Wedgets/task_card.dart';
 
 class TasksScreen extends StatefulWidget {
-  const TasksScreen({super.key, required this.numberWeek});
+  const TasksScreen({super.key,required this.numberWeek});
 
   final int numberWeek;
+
 
   @override
   State<TasksScreen> createState() => _TasksScreenState();
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+
+
   @override
   Widget build(BuildContext context) {
-    Week thisWeek = weeks[widget.numberWeek - 1];
+    Week thisWeek = weeks[widget.numberWeek - 1 ];
+
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(onPressed: (){Navigator.pop(context);}, icon:Icon(Icons.arrow_back),color: Colors.white,),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
+        title: Text(
+       thisWeek.title,style: TextStyle(color: Colors.white),
 
-        title: Text(thisWeek.title, style: TextStyle(color: Colors.white)),
+        ),
       ),
 
       body: Padding(

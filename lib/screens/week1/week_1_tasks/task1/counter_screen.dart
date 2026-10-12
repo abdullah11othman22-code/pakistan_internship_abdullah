@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CounterPage extends StatefulWidget {
@@ -16,10 +15,16 @@ class _CounterState extends State<CounterPage> {
     return Scaffold(
 
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // Edit
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,// Edit
         children: [
-          Text('Simple Counter App'),
-          SizedBox(height: 10),
+          SizedBox(height: 24,),
+          Text('Simple Counter App',   style: TextStyle(
+            color: Colors.deepPurple,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),),
+          SizedBox(height: 250),
           Center(
             child: SizedBox(
               child: Column(

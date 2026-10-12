@@ -23,7 +23,6 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed:onTap,
-      child: Text(title),
       style: ElevatedButton.styleFrom(
         minimumSize:  Size(h, w),
         backgroundColor: color,
@@ -32,6 +31,7 @@ class MainButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(rad),
         ),
       ),
+      child: Text(title),
     );
   }
 }

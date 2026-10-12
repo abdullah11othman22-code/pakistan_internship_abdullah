@@ -24,40 +24,47 @@ class TaskCard extends StatelessWidget {
         );
       },
 
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
+      child: Center(
+        child: Container(
+          height: 150,width: 150,
+          decoration: BoxDecoration(
+            color: Colors.white,
 
-          boxShadow: [
-            BoxShadow(
-              color: Colors.deepPurple,
-              blurRadius: 3,
-              spreadRadius: 2,
-              offset: Offset(-1, 0),
-            ),
-          ],
-        ),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
 
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(task.taskId, style: TextStyle(fontWeight: FontWeight.bold)),
+            boxShadow: [
+              BoxShadow(
 
-              SizedBox(height: 8),
 
-              Text(
-                task.title,
-                //overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                textAlign: TextAlign.center,
+                color: Colors.deepPurple,
+                blurRadius: 3,
+                spreadRadius: 2,
+                offset: Offset(-1, 0),
               ),
-
-              SizedBox(height: 12),
-
-              Text(task.state,style: TextStyle(color: Colors.green),),
             ],
+          ),
+
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(task.taskId, style: TextStyle(fontWeight: FontWeight.bold)),
+
+                SizedBox(height: 8),
+
+                Text(
+                  task.title,
+                  //overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+
+                SizedBox(height: 12),
+
+                Text(task.state,style: TextStyle(color: Colors.green),),
+              ],
+            ),
           ),
         ),
       ),

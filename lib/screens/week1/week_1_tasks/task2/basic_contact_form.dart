@@ -53,6 +53,7 @@ class _BasicContactFormState extends State<BasicContactForm> {
                     if (value == null || value.isEmpty) {
                       return "please fill the field";
                     }
+                    return null;
                //     else if (value) {} chek email
                   },
                 ),
@@ -68,6 +69,7 @@ class _BasicContactFormState extends State<BasicContactForm> {
                     } else if (value.length<20) {
                       return "please enter more than 20 character";
                     }
+                    return null;
                   },
                 ),
                 SizedBox(height: 24),
@@ -157,7 +159,7 @@ class _BasicContactFormState extends State<BasicContactForm> {
 
     });
   }
-  resetForm(){
+  void resetForm(){
     nameController.clear();
     emailController.clear();
     messageController.clear();

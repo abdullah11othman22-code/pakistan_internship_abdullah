@@ -44,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   horizontal: 40,vertical: 40
                 ),
                 child: Text(textAlign: TextAlign.center,
-                  'Welcome,this application contains the tests completed by the trainee Laith Al-Skaf',
+                  'Welcome,this application contains the tests completed by the trainer Abdullah Othman',
                   style: TextStyle(color: Colors.deepPurple),
                 ),
               ),

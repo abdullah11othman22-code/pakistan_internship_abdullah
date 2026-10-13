@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:project1/screens/week5/screens/recipe_add.dart';
 
 import '../data/mock_data.dart';
 import '../wedgit/recipe_card.dart';
@@ -39,7 +40,9 @@ class HomeRecipe extends StatelessWidget {
           bottom: 20,
           right: 20,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context)=>AddRecipe()) );
+            },
             child: CircleAvatar(
               radius: 32,
               backgroundColor:

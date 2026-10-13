@@ -24,22 +24,29 @@ class _AddRecipeState extends State<AddRecipe> {
   RecipeCategory? selectedCategory;
   File? selectedImage;
 
+
   void saveRecipe() {
+    debugPrint('1. Save button pressed');
+
     final isFormValid = _formKey.currentState!.validate();
+
+    debugPrint('2. Form valid: $isFormValid');
+    debugPrint('3. Ingredients: $ingredients');
+    debugPrint(
+      '4. Steps: ${steps.map((step) => {
+        'title': step.title,
+        'description': step.description,
+      }).toList()}',
+    );
 
     if (!isFormValid) return;
 
-    if (selectedCategory == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('يرجى اختيار نوع الوصفة')));
-      return;
-    }
-
-    if (selectedImage == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('يرجى اختيار صورة الوصفة')));
+    if (selectedCategory == null || selectedImage == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('يرجى اختيار النوع والصورة'),
+        ),
+      );
       return;
     }
 
@@ -47,12 +54,15 @@ class _AddRecipeState extends State<AddRecipe> {
       name: _nameController.text.trim(),
       imageUrlOrPath: selectedImage!.path,
       category: selectedCategory!,
-      ingredients: ingredients,
-      steps: steps,
+      ingredients: List<String>.from(ingredients),
+      steps: List<RecipeStep>.from(steps),
     );
 
-    Navigator.pop(context, recipe);
+    debugPrint('5. Returning recipe: ${recipe.name}');
+
+    Navigator.pop<Recipe>(context, recipe);
   }
+
 
   @override
   void dispose() {

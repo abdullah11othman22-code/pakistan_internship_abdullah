@@ -26,6 +26,7 @@ class _IngredientSectionState extends State<IngredientSection> {
     setState(() {
       ingredientControllers.add(TextEditingController());
     });
+    notifyIngredientsChanged();
   }
 
   void removeIngredient(int index) {
@@ -36,6 +37,7 @@ class _IngredientSectionState extends State<IngredientSection> {
     setState(() {});
 
     controller.dispose();
+    notifyIngredientsChanged();
   }
 
   @override
@@ -71,6 +73,7 @@ class _IngredientSectionState extends State<IngredientSection> {
                 controller: ingredientControllers[index],
                 onRemove: () => removeIngredient(index),
                 canRemove: ingredientControllers.length > 1,
+                onChanged: (_) => notifyIngredientsChanged(),
               );
             },
           ),

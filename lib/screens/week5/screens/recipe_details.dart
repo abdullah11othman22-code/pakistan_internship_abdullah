@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:project1/screens/week5/data/mock_data.dart';
@@ -21,7 +23,17 @@ class RecipeDetails extends StatelessWidget {
               SizedBox(
                 height: 250,
                 width: double.infinity,
-                child: Image.network(recipe.imageUrlOrPath, fit: BoxFit.cover),
+                child: Image(
+                  image: recipe.imageUrlOrPath.startsWith('http')
+                      ? NetworkImage(recipe.imageUrlOrPath)
+                      : FileImage(File(recipe.imageUrlOrPath)),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Icon(Icons.broken_image),
+                    );
+                  },
+                ),
               ),
               const Expanded(child: SizedBox()),
             ],

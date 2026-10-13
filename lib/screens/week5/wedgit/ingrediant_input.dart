@@ -7,11 +7,13 @@ class IngredientInput extends StatelessWidget {
     required this.controller,
     required this.onRemove,
     required this.canRemove,
+    required this.onChanged,
   });
 
   final TextEditingController controller;
   final VoidCallback onRemove;
   final bool canRemove;
+  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class IngredientInput extends StatelessWidget {
         Expanded(
           child: TextFormField(
             controller: controller,
+            onChanged: onChanged,
             decoration: const InputDecoration(
               labelText: 'المكوّن',
               hintText: 'مثلاً: كوب طحين',

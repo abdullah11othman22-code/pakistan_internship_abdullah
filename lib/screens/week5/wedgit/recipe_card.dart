@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../models/model.dart';
 import '../screens/recipe_details.dart';
@@ -57,8 +59,10 @@ class RecipeCard extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 height: 125,
-                child: Image.network(
-                  recipe.imageUrlOrPath,
+                child: Image(
+                  image: recipe.imageUrlOrPath.startsWith('http')
+                      ? NetworkImage(recipe.imageUrlOrPath)
+                      : FileImage(File(recipe.imageUrlOrPath)),
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return const Center(

@@ -137,8 +137,8 @@ class RecipeCard extends StatelessWidget {
             // الجزء الأول: الصورة
       
             ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10.5),
+              borderRadius:  BorderRadius.only(
+                topLeft: Radius.circular(2),
                 topRight: Radius.circular(10.5),
               ),
               child: SizedBox(
@@ -149,7 +149,7 @@ class RecipeCard extends StatelessWidget {
                   source: recipe.imageUrlOrPath,
                   width: double.infinity,
                   height: 130,
-                  borderRadius: BorderRadius.circular(12),
+                  //borderRadius: BorderRadius.circular(12),
                 ),
               ),
             ),

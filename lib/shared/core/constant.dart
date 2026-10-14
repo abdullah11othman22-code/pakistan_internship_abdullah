@@ -485,6 +485,6 @@ nameTest: 'جغرافيا متقدمة',
     ))
   ]),
   Week(title: "Week -5-", screen: TasksScreen(numberWeek: 5,),tasks:[Task(
-      taskId: '1', state: 'in progress', title: 'Recipe App',screen: HomeRecipe()),]
+      taskId: '1', state: 'done', title: 'Recipe App',screen: HomeRecipe()),]
 
 )];

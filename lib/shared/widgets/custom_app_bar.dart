@@ -22,7 +22,7 @@ class CustomAppbar extends StatelessWidget
         ),
       ),
       centerTitle: true,
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.deepPurple.withOpacity(0.6),
       title: Text(
         title,
         style: const TextStyle(

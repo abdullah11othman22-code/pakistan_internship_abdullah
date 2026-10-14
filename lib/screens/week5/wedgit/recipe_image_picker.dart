@@ -38,19 +38,38 @@ class _RecipeImagePickerState extends State<RecipeImagePicker> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ElevatedButton.icon(
-          onPressed: pickImage,
-          icon: const Icon(Icons.add_photo_alternate_outlined),
-          label: const Text('إضافة صورة'),
-        ),
-        const SizedBox(width: 12),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.deepPurple.withOpacity(0.4),
+                blurRadius: 5,
+                offset: const Offset(0, 0),
+              ),
+            ],
+          ),
+          child: ElevatedButton.icon(
+            onPressed: pickImage,
+            icon: const Icon(Icons.add_photo_alternate_outlined),
+            label: const Text('Click to upload image'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.deepPurple,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ),        const Spacer(),
         GestureDetector(
           onTap: pickImage,
           child: Container(
             width: 75,
             height: 65,
             decoration: BoxDecoration(
-              color: Colors.deepPurple.withOpacity(0.06),
+              color: Colors.white,
               border: Border.all(color: Colors.deepPurple.withOpacity(0.5)),
               borderRadius: BorderRadius.circular(10),
             ),

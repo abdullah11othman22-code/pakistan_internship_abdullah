@@ -25,14 +25,24 @@ class StepInput extends StatelessWidget {
         TextFormField(
           controller: titleController,
           onChanged: onChanged,
-          decoration: const InputDecoration(
-            labelText: 'عنوان الخطوة',
-            hintText: 'مثلاً: تجهيز المكونات',
-            border: OutlineInputBorder(),
+          decoration: InputDecoration(
+            labelText: 'Step Name',
+            border: const OutlineInputBorder(),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.deepPurple.withOpacity(0.8),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.deepPurple.withOpacity(0.4),
+                width: 2,
+              ),
+            ),
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'يرجى إدخال عنوان الخطوة';
+              return 'please input step name ';
             }
             return null;
           },
@@ -42,15 +52,25 @@ class StepInput extends StatelessWidget {
           controller: descriptionController,
           onChanged: onChanged,
           maxLines: 3,
-          decoration: const InputDecoration(
-            labelText: 'وصف الخطوة',
-            hintText: 'اشرح ماذا يجب أن نفعل في هذه الخطوة',
-            border: OutlineInputBorder(),
+          decoration: InputDecoration(
+            labelText: 'Description Step',
+            border: const OutlineInputBorder(),
             alignLabelWithHint: true,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.deepPurple.withOpacity(0.8),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.deepPurple.withOpacity(0.4),
+                width: 2,
+              ),
+            ),
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'يرجى إدخال وصف الخطوة';
+              return 'please input description step';
             }
             return null;
           },

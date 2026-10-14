@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:project1/screens/splash_screen/welcome_page.dart';
 
@@ -13,11 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple.withOpacity(0.35)),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+        ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple.withOpacity(0.2),
+        ),
         scaffoldBackgroundColor: Colors.white,
-      iconTheme: IconThemeData(color: Colors.white)
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
       ),
-      home: WelcomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }

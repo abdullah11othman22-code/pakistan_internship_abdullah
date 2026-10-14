@@ -24,14 +24,24 @@ class IngredientInput extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             onChanged: onChanged,
-            decoration: const InputDecoration(
-              labelText: 'المكوّن',
-              hintText: 'مثلاً: كوب طحين',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              hintText: '1 cup of flour',
+              border: const OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.deepPurple.withOpacity(0.8),
+                )
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.deepPurple.withOpacity(0.4),
+                  width: 2,
+                ),
+              ),
             ),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'يرجى إدخال المكوّن';
+                return 'please input ingredient';
               }
               return null;
             },

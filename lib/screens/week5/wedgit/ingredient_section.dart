@@ -80,11 +80,32 @@ class _IngredientSectionState extends State<IngredientSection> {
           const SizedBox(height: 12),
           Align(
             alignment: Alignment.centerRight,
-            child: ElevatedButton.icon(
-              onPressed: addIngredient,
-              icon: const Icon(Icons.add),
-              label: const Text('إضافة مكوّن'),
-            ),
+            child:
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.deepPurple.withOpacity(0.4),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: ElevatedButton.icon(
+                onPressed: addIngredient,
+                icon: const Icon(Icons.add),
+                label: const Text('Add Ingredient'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.deepPurple,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            )
           ),
         ],
       ),

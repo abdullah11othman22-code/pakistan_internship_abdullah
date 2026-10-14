@@ -1,6 +1,8 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:project1/screens/week5/data/recipe_database.dart';
 import 'package:project1/screens/week5/models/model.dart';
 import 'package:project1/screens/week5/wedgit/ingredient_section.dart';
 import 'package:project1/screens/week5/wedgit/step_section.dart';
@@ -24,32 +26,23 @@ class _AddRecipeState extends State<AddRecipe> {
   RecipeCategory? selectedCategory;
   File? selectedImage;
 
-
-  void saveRecipe() {
-    debugPrint('1. Save button pressed');
-
+  Future<void> saveRecipe() async {
+    // 1. Validate the recipe name.
     final isFormValid = _formKey.currentState!.validate();
-
-    debugPrint('2. Form valid: $isFormValid');
-    debugPrint('3. Ingredients: $ingredients');
-    debugPrint(
-      '4. Steps: ${steps.map((step) => {
-        'title': step.title,
-        'description': step.description,
-      }).toList()}',
-    );
 
     if (!isFormValid) return;
 
+    // 2. Check whether a category and image have been selected.
     if (selectedCategory == null || selectedImage == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('يرجى اختيار النوع والصورة'),
+          content: Text('Please select a category and an image.'),
         ),
       );
       return;
     }
 
+    // 3. Create a recipe object from the entered data.
     final recipe = Recipe(
       name: _nameController.text.trim(),
       imageUrlOrPath: selectedImage!.path,
@@ -58,11 +51,24 @@ class _AddRecipeState extends State<AddRecipe> {
       steps: List<RecipeStep>.from(steps),
     );
 
-    debugPrint('5. Returning recipe: ${recipe.name}');
+    // 4. Save the recipe to the database.
+    try {
+      await RecipeDatabase.instance.insertRecipe(recipe);
 
-    Navigator.pop<Recipe>(context, recipe);
+      if (!mounted) return;
+
+      // 5. Return to the previous screen after saving successfully.
+      Navigator.pop(context);
+    } catch (error) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to save recipe: $error'),
+        ),
+      );
+    }
   }
-
 
   @override
   void dispose() {
@@ -73,28 +79,34 @@ class _AddRecipeState extends State<AddRecipe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('إضافة وصفة')),
+      appBar: AppBar(
+        title: const Text('Add Recipe'),
+      ),
       body: SafeArea(
         child: Form(
           key: _formKey,
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              const Text(
-                'اسم الوصفة',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+                'Recipe Name',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                  color: Colors.deepPurple.withOpacity(0.8)
+
+                ),
               ),
               const SizedBox(height: 8),
 
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  hintText: 'مثلاً: كيك الشوكولاتة',
+                  hintText: 'e.g., Chocolate Cake',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'يرجى إدخال اسم الوصفة';
+                    return 'Please enter a recipe name.';
                   }
                   return null;
                 },
@@ -102,9 +114,13 @@ class _AddRecipeState extends State<AddRecipe> {
 
               const SizedBox(height: 24),
 
-              const Text(
-                'المكونات',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        Text(
+                'Ingredients',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,                  color: Colors.deepPurple.withOpacity(0.8)
+
+                ),
               ),
               const SizedBox(height: 8),
 
@@ -116,9 +132,13 @@ class _AddRecipeState extends State<AddRecipe> {
 
               const SizedBox(height: 24),
 
-              const Text(
-                'خطوات التحضير',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                'Preparation Steps',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple.withOpacity(0.8)
+                ),
               ),
               const SizedBox(height: 8),
 
@@ -151,11 +171,31 @@ class _AddRecipeState extends State<AddRecipe> {
 
               SizedBox(
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: saveRecipe,
-                  child: const Text(
-                    'إضافة الوصفة',
-                    style: TextStyle(fontSize: 16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.deepPurple.withOpacity(0.4),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.deepPurple,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: saveRecipe,
+                    child: const Text(
+                      'Add Recipe',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
